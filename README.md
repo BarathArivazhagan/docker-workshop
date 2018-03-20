@@ -1,2 +1,2 @@
 # docker-workshop
-Play ground for docker samples
+Play ground for docker and docker compose samples
