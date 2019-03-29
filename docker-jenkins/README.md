@@ -17,7 +17,7 @@ $ docker run -p 8080:8080 -p 50000:50000 -v /your/home:/var/jenkins_home jenkins
 $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock  -v $(which docker):/usr/bin/docker -p 8080:8080 jenkins
 ```
 
-### To use jenkins contianer with docker and maven 
+### To use jenkins container with docker and maven 
 
 ```
 $ git clone  https://github.com/BarathArivazhagan/docker-workshop.git
