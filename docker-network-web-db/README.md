@@ -11,10 +11,10 @@ $ docker network create web-db-network
 $ docker network ls
 
 
-$ docker run --name db -p 3306:3306 --network web-db-network  -e MYSQL_ROOT_PASSWORD=root  -d mysql
+$ docker run --name db -p 3306:3306 --network web-db-network  -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb -d mysql
 
 
-$ docker run --name web-app -p 8080:8080 -d  --network web-db-network -e SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/jpadb  barathece91/web-app
+$ docker run --name web-app -p 8080:8080 -d  --network web-db-network -e SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/testdb  barathece91/web-app
 
 
 $ docker network inspect  web-db-network
