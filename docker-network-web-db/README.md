@@ -11,10 +11,10 @@ $ docker network create web-db-network
 $ docker network ls
 
 
-$ docker run --name mysql-service -p 3306:3306 --network web-db-network  -e MYSQL_ROOT_PASSWORD=root  -d mysql
+$ docker run --name db -p 3306:3306 --network web-db-network  -e MYSQL_ROOT_PASSWORD=root  -d mysql
 
 
-$ docker run --name spring-db -p 8080:8080 -d  --network web-db-network -e SPRING_DATASOURCE_URL=jdbc:mysql://mysql-service:3306/jpadb  spring-db
+$ docker run --name web-app -p 8080:8080 -d  --network web-db-network -e SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/jpadb  barathece91/web-app
 
 
 $ docker network inspect  web-db-network
@@ -46,14 +46,14 @@ $ docker network inspect  web-db-network
         "ConfigOnly": false,
         "Containers": {
             "13b46cbf8d7d586b54946a5cd1d81b2c1b256bbaf7be3ec1a09403479b05f279": {
-                "Name": "spring-db",
+                "Name": "web-app",
                 "EndpointID": "668cfff1945d1d8a8874d73014f7529ddb6059ff1cbee37c9ca9ed6ab7b8e12c",
                 "MacAddress": "02:42:ac:12:00:03",
                 "IPv4Address": "172.18.0.3/16",
                 "IPv6Address": ""
             },
             "1dfd2f8899dcb2207d26d42d3f51a6f390e017cab0fcb67a79fd0ef3440654a0": {
-                "Name": "mysql-service",
+                "Name": "db",
                 "EndpointID": "7e7e9050d37d7253caa8407cbd38a7a16ffa26e5b75880c98eb77396bd3649d8",
                 "MacAddress": "02:42:ac:12:00:02",
                 "IPv4Address": "172.18.0.2/16",
